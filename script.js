@@ -9,7 +9,7 @@ Make a computerPlay function that does the following:
     Assign that number to either (1) Rock, (2) Paper, (3) Scissors
     Return computer's choice (make sure to turn to lowercase with .toLowerCase() method)
 
-Make a rpsRound function that plays one round of RPS and does the following:
+Make a playRound function that plays one round of RPS and does the following:
     Ask user to input an option (rock, paper, or scissors)
     Store player's choice (make sure to turn to lowercase with .toLowerCase() method) in a variable called playerSelection
     Call computerPlay function and store returned choice in a computerSelection variable
@@ -36,3 +36,17 @@ Make a rpsRound function that plays one round of RPS and does the following:
     NOTE: For computer wins, return string `You chose ${playerSelection} and lost to the computer, who chose ${computerSelection}`
 
 */
+
+function computerPlay() {
+    const randInt = Math.floor(Math.random() * 3) + 1;
+    let computerSelection;
+    switch (randInt) {
+        case 1:
+            computerSelection = "rock";
+        case 2:
+            computerSelection = "paper";
+        case 3:
+            computerSelection = "scissors";
+    }
+    return computerSelection;
+}
