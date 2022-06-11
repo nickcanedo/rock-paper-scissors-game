@@ -95,19 +95,19 @@ function game() {
                 let gameWinner = "Computer";
                 gameOver = true;
             } else if (roundOutcome === tieMessage) {
-                alert(`Player ${playerScore} - ${computerScore} Computer`);
+                console.log(`Player ${playerScore} - ${computerScore} Computer`);
             } else if (roundOutcome === winMessage) {
                 playerScore += 1;
-                alert(`Player ${playerScore} - ${computerScore} Computer`);
+                console.log(`Player ${playerScore} - ${computerScore} Computer`);
             } else if (roundOutcome === loseMessage) {
                 computerScore += 1;
-                alert(`Player ${playerScore} - ${computerScore} Computer`);
+                console.log(`Player ${playerScore} - ${computerScore} Computer`);
             }
         }
     }
     if (gameWinner === "Player") {
-        alert(`Congratulations! You have beat the computer with a score of ${playerScore} - ${computerScore}`);
+        console.log(`Congratulations! You have beat the computer with a score of ${playerScore} - ${computerScore}`);
     } else {
-        alert(`Better luck next time! You have lost to the computer with a score of ${playerScore} - ${computerScore}`);
+        console.log(`Better luck next time! You have lost to the computer with a score of ${playerScore} - ${computerScore}`);
     }
 }
