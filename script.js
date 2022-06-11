@@ -39,7 +39,6 @@ Make a playRound function that plays one round of RPS and does the following:
 
 function computerPlay() {
     const randInt = Math.floor(Math.random() * 3) + 1;
-    console.log(randInt);
     let computerSelection;
     if (randInt === 1) { 
         computerSelection = "rock";
@@ -80,31 +79,30 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter one of the following options (Rock, Paper, or Scissors):");
+        let playerSelection = prompt("Enter one of the following options (Rock, Paper, or Scissors):").toLowerCase();
         let computerSelection = computerPlay();
-        let roundOutcome = playRound();
-        let gameOver = false;
-        if (!gameOver) {
-            if (playerScore === 3) {
-                let gameWinner = "Player";
-                gameOver = true;
-            } else if (computerScore === 3) {
-                let gameWinner = "Computer";
-                gameOver = true;
-            } else if (roundOutcome === `You both chose ${playerSelection} and tied!`) {
-                console.log(`Player ${playerScore} - ${computerScore} Computer`);
-            } else if (roundOutcome === `You chose ${playerSelection} and beat the computer, who chose ${computerSelection}!`) {
-                playerScore += 1;
-                console.log(`Player ${playerScore} - ${computerScore} Computer`);
-            } else if (roundOutcome === `You chose ${playerSelection} and lost to the computer, who chose ${computerSelection}`) {
-                computerScore += 1;
-                console.log(`Player ${playerScore} - ${computerScore} Computer`);
-            }
+        let roundOutcome = playRound(playerSelection, computerSelection);
+        if (roundOutcome === `You both chose ${playerSelection} and tied!`) {
+            console.log(`Player ${playerScore} - ${computerScore} Computer`);
+        } else if (roundOutcome === `You chose ${playerSelection} and beat the computer, who chose ${computerSelection}!`) {
+            playerScore += 1;
+            console.log(`Player ${playerScore} - ${computerScore} Computer`);
+        } else if (roundOutcome === `You chose ${playerSelection} and lost to the computer, who chose ${computerSelection}`) {
+            computerScore += 1;
+            console.log(`Player ${playerScore} - ${computerScore} Computer`);
         }
     }
-    if (gameWinner === "Player") {
-        console.log(`Congratulations! You have beat the computer with a score of ${playerScore} - ${computerScore}`);
+    let gameWinner;
+    if (playerScore > computerScore) {
+        gameWinner = "Player";
+    } else if (playerScore < computerScore) {
+        gameWinner = "Computer";
     } else {
+        gameWinner = "Tie";
+    }
+    if (gameWinner == "Player") {
+        console.log(`Congratulations! You have beat the computer with a score of ${playerScore} - ${computerScore}`);
+    } else if (gameWinner == "Computer")  {
         console.log(`Better luck next time! You have lost to the computer with a score of ${playerScore} - ${computerScore}`);
     }
 }
