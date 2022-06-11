@@ -78,8 +78,18 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Enter one of the following options (Rock, Paper, or Scissors):").toLowerCase();
+    while (playerScore < 5 && computerScore < 5) {
+        let playerSelection;
+        while (typeof(playerSelection) != "string") {
+            if (playerSelection == "null") {
+                playerSelection = "q";
+            } else {
+                playerSelection = prompt("Enter one of the following options (Rock, Paper, or Scissors):").toLowerCase();
+            }
+        }
+        if (playerSelection === "q") {
+            return;
+        }
         let computerSelection = computerPlay();
         let roundOutcome = playRound(playerSelection, computerSelection);
         if (roundOutcome === `You both chose ${playerSelection} and tied!`) {
