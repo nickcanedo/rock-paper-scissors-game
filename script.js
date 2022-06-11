@@ -75,3 +75,39 @@ function playRound(playerSelection, computerSelection) {
         return errorMessage;
     }
 }
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieMessage = `You both chose ${playerSelection} and tied!`;
+    let winMessage = `You chose ${playerSelection} and beat the computer, who chose ${computerSelection}!`;
+    let loseMessage = `You chose ${playerSelection} and lost to the computer, who chose ${computerSelection}`;
+    for (let i = 0; i < 5; i++) {
+        let playerSelection = prompt("Enter one of the following options (Rock, Paper, or Scissors):");
+        let computerSelection = computerPlay();
+        let roundOutcome = playRound();
+        let gameOver = false;
+        if (!gameOver) {
+            if (playerScore === 3) {
+                let gameWinner = "Player";
+                gameOver = true;
+            } else if (computerScore === 3) {
+                let gameWinner = "Computer";
+                gameOver = true;
+            } else if (roundOutcome === tieMessage) {
+                alert(`Player ${playerScore} - ${computerScore} Computer`);
+            } else if (roundOutcome === winMessage) {
+                playerScore += 1;
+                alert(`Player ${playerScore} - ${computerScore} Computer`);
+            } else if (roundOutcome === loseMessage) {
+                computerScore += 1;
+                alert(`Player ${playerScore} - ${computerScore} Computer`);
+            }
+        }
+    }
+    if (gameWinner === "Player") {
+        alert(`Congratulations! You have beat the computer with a score of ${playerScore} - ${computerScore}`);
+    } else {
+        alert(`Better luck next time! You have lost to the computer with a score of ${playerScore} - ${computerScore}`);
+    }
+}
