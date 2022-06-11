@@ -39,14 +39,18 @@ Make a playRound function that plays one round of RPS and does the following:
 
 function computerPlay() {
     const randInt = Math.floor(Math.random() * 3) + 1;
+    console.log(randInt);
     let computerSelection;
-    switch (randInt) {
-        case 1:
-            computerSelection = "rock";
-        case 2:
-            computerSelection = "paper";
-        case 3:
-            computerSelection = "scissors";
+    if (randInt === 1) { 
+        computerSelection = "rock";
+    } else if (randInt === 2) { 
+        computerSelection = "paper";
+    } else if (randInt === 3) { 
+        computerSelection = "scissors";
     }
     return computerSelection;
+}
+
+function playRound(computerSelection, playerSelection) {
+
 }
