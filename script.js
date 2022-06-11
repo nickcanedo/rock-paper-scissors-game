@@ -51,6 +51,27 @@ function computerPlay() {
     return computerSelection;
 }
 
-function playRound(computerSelection, playerSelection) {
-
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    let tieMessage = `You both chose ${playerSelection} and tied!`;
+    let winMessage = `You chose ${playerSelection} and beat the computer, who chose ${computerSelection}!`;
+    let loseMessage = `You chose ${playerSelection} and lost to the computer, who chose ${computerSelection}`;
+    let errorMessage = "You must choose either Rock, Paper, or Scissors."
+    if (playerSelection === computerSelection) {
+        return tieMessage;
+    } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        return winMessage;
+    } else if (playerSelection === "rock" && computerSelection === "paper") {
+        return loseMessage;
+    } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        return loseMessage;
+    } else if (playerSelection === "paper" && computerSelection === "rock") {
+        return winMessage;
+    } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        return winMessage;
+    } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        return loseMessage;
+    } else {
+        return errorMessage;
+    }
 }
