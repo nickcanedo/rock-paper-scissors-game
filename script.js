@@ -104,7 +104,6 @@ const currentPlayer = document.querySelector("#playerChose");
 const currentComputer = document.querySelector("#computerChose");
 const playerScoreDiv = document.querySelector(".playerScore");
 const computerScoreDiv = document.querySelector(".computerScore");
-const gameWinnerPara = document.getElementById("endgame");
 let playerScore = 0;
 let computerScore = 0;
 
@@ -172,13 +171,27 @@ window.addEventListener("load", function(e) {
     computerScoreDiv.textContent = `COMPUTER: ${computerScore}`;
 });
 
-function displayPlayerWon() {
-    gameWinnerPara.textContent = "YOU HAVE BEAT THE COMPUTER!";
+const githubIcon = document.querySelector(".fa-brands");
+githubIcon.addEventListener('mouseover', function(e) {
+    e.target.classList.add("fa-bounce")
+});
+
+githubIcon.addEventListener('mouseleave', function(e) {
+    e.target.classList.remove("fa-bounce")
+});
+
+function addPlaying(e) {
+    e.target.classList.add("playing");
+} 
+
+function removePlaying(e) {
+    e.target.classList.remove("playing");
 }
 
-function displayComputerWon() {
-    gameWinnerPara.textContent = "YOU HAVE LOST TO THE COMPUTER :(";
-}
+rockBtn.addEventListener("mouseover", addPlaying);
+paperBtn.addEventListener("mouseover", addPlaying);
+scissorsBtn.addEventListener("mouseover", addPlaying);
 
-
-
+rockBtn.addEventListener("mouseleave", removePlaying);
+paperBtn.addEventListener("mouseleave", removePlaying);
+scissorsBtn.addEventListener("mouseleave", removePlaying);

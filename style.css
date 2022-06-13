@@ -21,6 +21,9 @@ body {
     padding: 40px 0 20px 0;
     width: 100%;
     text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: bolder;
+    font-size: 30px;
 }
 
 .footer {
@@ -98,8 +101,21 @@ button {
     margin: 80px 20px 0 20px;
     background-color: darkgray;
     font-size: 80px;
+    transition: all 0.1s ease;
 }
 
 button:hover {
     background-color: gray;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.playing {
+    transform: scale(1.05);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+
 }
