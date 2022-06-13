@@ -50,27 +50,135 @@ function computerPlay() {
     return computerSelection;
 }
 
+const winnerPara = document.querySelector(".winner");
+const winReasonPara = document.querySelector(".winReason");
+
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
-    let tieMessage = `You both chose ${playerSelection} and tied!`;
-    let winMessage = `You chose ${playerSelection} and beat the computer, who chose ${computerSelection}!`;
-    let loseMessage = `You chose ${playerSelection} and lost to the computer, who chose ${computerSelection}`;
+    let tieMessage = `You both chose ${playerSelection}`;
+    let winMessage = `${playerSelection[0].toUpperCase() + playerSelection.substring(1)} beats ${computerSelection}`;
+    let loseMessage = `${computerSelection[0].toUpperCase() + computerSelection.substring(1)} beats ${playerSelection}`;
     let errorMessage = "You must choose either Rock, Paper, or Scissors."
+    // looks at all possible cases
     if (playerSelection === computerSelection) {
+        winnerPara.textContent = "Tie";
+        winReasonPara.textContent = tieMessage;
         return tieMessage;
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
+        winnerPara.textContent = "You win";
+        winReasonPara.textContent = winMessage;
         return winMessage;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
+        winnerPara.textContent = "You lose";
+        winReasonPara.textContent = loseMessage;
         return loseMessage;
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
+        winnerPara.textContent = "You lose";
+        winReasonPara.textContent = loseMessage;
         return loseMessage;
     } else if (playerSelection === "paper" && computerSelection === "rock") {
+        winnerPara.textContent = "You win";
+        winReasonPara.textContent = winMessage;
         return winMessage;
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
+        winnerPara.textContent = "You win";
+        winReasonPara.textContent = winMessage;
         return winMessage;
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
+        winnerPara.textContent = "You lose";
+        winReasonPara.textContent = loseMessage;
         return loseMessage;
     } else {
+        winnerPara.textContent = "Error";
+        winReasonPara.textContent = errorMessage;
         return errorMessage;
     }
 }
+
+// selecting certain elements to manipulate DOM with event listeners
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+const buttons = document.querySelectorAll(".playerOptions");
+const currentPlayer = document.querySelector("#playerChose");
+const currentComputer = document.querySelector("#computerChose");
+const playerScoreDiv = document.querySelector(".playerScore");
+const computerScoreDiv = document.querySelector(".computerScore");
+const gameWinnerPara = document.getElementById("endgame");
+let playerScore = 0;
+let computerScore = 0;
+
+buttons.forEach(button => button.addEventListener("click", function(e) {
+    let playerSelection = e.target.id;
+    if(playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
+        // conditional statement for error handling when not clicking on one of 3 buttons
+        let computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+        currentPlayer.innerHTML = e.target.innerHTML;
+        // below here is dealing with keeping score and showing current round selections in top boxes
+        if (computerSelection === "rock") {
+            currentComputer.innerHTML = rockBtn.innerHTML;
+            if (playerSelection === "paper") {
+                playerScore += 1;
+                playerScoreDiv.textContent = `PLAYER: ${playerScore}`;
+            } else if (playerSelection === "scissors") {
+                computerScore += 1
+                computerScoreDiv.textContent = `COMPUTER: ${computerScore}`;
+            }
+        }
+
+        else if (computerSelection === "paper") {
+            currentComputer.innerHTML = paperBtn.innerHTML;
+            if (playerSelection === "scissors") {
+                playerScore += 1;
+                playerScoreDiv.textContent = `PLAYER: ${playerScore}`;
+            } else if (playerSelection === "rock") {
+                computerScore += 1
+                computerScoreDiv.textContent = `COMPUTER: ${computerScore}`;
+            }
+        }
+
+        else if (computerSelection === "scissors") {
+            currentComputer.innerHTML = scissorsBtn.innerHTML;
+            if (playerSelection === "rock") {
+                playerScore += 1;
+                playerScoreDiv.textContent = `PLAYER: ${playerScore}`;
+            } else if (playerSelection === "paper") {
+                computerScore += 1
+                computerScoreDiv.textContent = `COMPUTER: ${computerScore}`;
+            }
+        }
+
+    } else return;
+    // this checks when game is over and resets stats
+    if (playerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreDiv.textContent = `PLAYER: ${playerScore}`;
+        computerScoreDiv.textContent = `COMPUTER: ${computerScore}`;
+        location.href = './pages/playagainplayer.html';
+    } else if (computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        playerScoreDiv.textContent = `PLAYER: ${playerScore}`;
+        computerScoreDiv.textContent = `COMPUTER: ${computerScore}`;
+        location.href = './pages/playagaincomputer.html';
+    }
+}));
+
+//sets player score div text to 0 by default when opening page
+window.addEventListener("load", function(e) {
+    playerScoreDiv.textContent = `PLAYER: ${playerScore}`;
+    computerScoreDiv.textContent = `COMPUTER: ${computerScore}`;
+});
+
+function displayPlayerWon() {
+    gameWinnerPara.textContent = "YOU HAVE BEAT THE COMPUTER!";
+}
+
+function displayComputerWon() {
+    gameWinnerPara.textContent = "YOU HAVE LOST TO THE COMPUTER :(";
+}
+
+
+

@@ -35,6 +35,19 @@ body {
     justify-content: space-around;
 }
 
+.textDisplay {
+    text-align: center;
+    font-size: 20px;
+}
+
+.winner {
+    margin-bottom: 5px;
+}
+
+.winReason {
+    margin-bottom: 20px;
+}
+
 .currentRound,
 .gameScore,
 .playerOptions {
@@ -51,6 +64,7 @@ body {
     height: 120px;
     border-radius: 10px;
     font-size: 80px;
+    text-align: center;
 }
 
 #versus {
