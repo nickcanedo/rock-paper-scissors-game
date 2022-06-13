@@ -5,8 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPS Game</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <script src="script.js"></script>
+    <header class="header">
+        <h1>ROCK PAPER SCISSORS</h1>
+    </header>
+    <main class="main">
+        <div class="currentRound">
+            <div id="playerChose">
+
+            </div>
+            <div id="versus">
+                VS
+            </div>
+            <div id="computerChose">
+
+            </div>
+        </div>
+        <div class="gameScore">
+            <div class="playerScore">
+                PLAYER:
+            </div>
+            <div class="computerScore">
+                COMPUTER:
+            </div>
+        </div>
+        <div class="playerOptions">
+            <button id="rock">✊</button>
+            <button id="paper">✋</button>
+            <button id="scissors">✌️</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>Copyright ©
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            Nicolas Rebollo
+        </p>
+    </footer>
 </body>
 </html>

@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+}
+
+.header {
+    padding: 40px 0 20px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.footer {
+    padding: 20px 0 20px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.currentRound,
+.gameScore,
+.playerOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#playerChose,
+#computerChose {
+    background-color: darkgray;
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    font-size: 80px;
+}
+
+#versus {
+    text-align: center;
+    margin: 40px 30px 40px 30px;
+    font-size: 40px;
+}
+
+#playerChose {
+    margin: 40px 30px 40px 0;
+}
+
+#computerChose {
+    margin: 40px 0 40px 30px;
+}
+
+.playerScore {
+    margin: 40px 80px 40px 0px;
+    font-size: 24px;
+}
+
+.computerScore {
+    margin: 40px 0 40px 80px;
+    font-size: 24px;
+}
+
+button {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    margin: 80px 20px 0 20px;
+    background-color: darkgray;
+    font-size: 80px;
+}
+
+button:hover {
+    background-color: gray;
+}
